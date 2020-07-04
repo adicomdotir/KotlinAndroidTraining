@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">BeginnerIdea</string>
     <string name="bin2dec">Bin2Dec</string>
+    <string name="binary_input">Binary Input:</string>
+    <string name="zero">0</string>
+    <string name="result">Result: 0</string>
+    <string name="calculate">Calculate</string>
 </resources>
