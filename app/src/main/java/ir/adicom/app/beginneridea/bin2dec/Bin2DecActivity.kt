@@ -26,7 +26,7 @@ class Bin2DecActivity : AppCompatActivity() {
 
     private fun bin2Dec(value: String): String {
         // 111 = 1 * 2^2 + 1 * 2^1 + 1 * 2^0
-        var bin = value.toInt()
+        var bin = value.toLong()
         var result = 0
         var index = 0
         while (bin > 0) {

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context=".bin2dec.Bin2DecActivity">
 
     <EditText
@@ -13,6 +14,7 @@
         android:ems="10"
         android:inputType="number"
         android:text="@string/zero"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,6 +24,7 @@
         android:layout_height="wrap_content"
         android:text="@string/binary_input"
         android:textSize="24sp"
+        android:textColor="@color/colorA"
         app:layout_constraintEnd_toStartOf="@+id/edt_binary_input"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,6 +36,8 @@
         android:layout_marginTop="100dp"
         android:text="@string/result"
         android:textSize="32sp"
+        android:background="@drawable/border_textview"
+        android:textColor="@color/colorA"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
