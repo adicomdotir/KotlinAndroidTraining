@@ -37,7 +37,7 @@ class ColorToHexActivity : AppCompatActivity() {
                 sb.append(decimalToHex(redValue))
                 sb.append(decimalToHex(greenValue))
                 sb.append(decimalToHex(blueValue))
-                tvResult.text = sb.toString()
+                tvResult.text = "Result: $sb"
             }
         }
     }
@@ -46,9 +46,14 @@ class ColorToHexActivity : AppCompatActivity() {
         val sb = StringBuilder()
         var newValue = value
         while (newValue > 0) {
-            val res = newValue % 16;
+            val res = newValue % 16
             newValue /= 16
             sb.append(numberToDigit(res))
+        }
+        if (sb.isEmpty()) {
+            sb.append("00")
+        } else if (sb.length == 1) {
+            sb.append("0")
         }
         return sb.reverse().toString()
     }
