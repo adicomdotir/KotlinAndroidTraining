@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".rgb2hex.ColorToHexActivity"></activity>
+        <activity android:name=".quiz.SimpleQuizActivity"></activity>
+        <activity android:name=".rgb2hex.ColorToHexActivity" />
         <activity android:name=".bin2dec.Bin2DecActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

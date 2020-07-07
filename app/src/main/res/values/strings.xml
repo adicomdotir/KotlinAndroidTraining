@@ -6,4 +6,5 @@
     <string name="result">Result: 0</string>
     <string name="calculate">Calculate</string>
     <string name="rgb2hex">RGB2Hex</string>
+    <string name="quiz_app">Quiz App</string>
 </resources>
