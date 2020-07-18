@@ -3,6 +3,7 @@ package ir.adicom.app.beginneridea.quiz
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -22,6 +23,7 @@ class SimpleQuizActivity : AppCompatActivity() {
     var correctAnswer: Int = 0
     var score: Int = 0
     var questionRandomIndex: Int = 0
+    var isClick = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,21 +47,32 @@ class SimpleQuizActivity : AppCompatActivity() {
     }
 
     private fun btnOnClick(l: View) {
-        val btn = findViewById<Button>(l.id)
-        if (l.getTag() == correctAnswer) {
-            btn.setTextColor(Color.GREEN)
-            score += 10
-            tvScore.text = "Score: $score"
-            generateQuestion()
-        } else {
-            btn.setTextColor(Color.RED)
-            val intent = Intent(this, EndGameActivity::class.java)
-            intent.putExtra("score", score)
-            startActivity(intent)
+        if (!isClick) {
+            val btn = findViewById<Button>(l.id)
+            if (l.getTag() == correctAnswer) {
+                btn.setTextColor(Color.GREEN)
+                score += 10
+                tvScore.text = "Score: $score"
+                val handler = Handler()
+                handler.postDelayed({
+                    generateQuestion()
+                }, 1500)
+            } else {
+                btn.setTextColor(Color.RED)
+                val intent = Intent(this, EndGameActivity::class.java)
+                intent.putExtra("score", score)
+                val handler = Handler()
+                handler.postDelayed({
+                    startActivity(intent)
+                }, 1500)
+            }
+            isClick = true
         }
     }
 
     private fun generateQuestion() {
+        isClick = false
+
         questionRandomIndex = floor(Math.random() * countries.size).toInt()
         while (questionRandomIndex % 2 == 1) {
             questionRandomIndex = floor(Math.random() * countries.size).toInt()

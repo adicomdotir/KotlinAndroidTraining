@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="MyButton" parent="Base.TextAppearance.AppCompat.Button">
+        <item name="android:textColor">@drawable/btn_text_color</item>
+        <item name="android:background">@drawable/btn_custom</item>
+    </style>
+
 </resources>
