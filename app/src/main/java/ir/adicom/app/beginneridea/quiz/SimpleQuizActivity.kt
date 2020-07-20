@@ -1,5 +1,7 @@
 package ir.adicom.app.beginneridea.quiz
 
+import android.animation.ArgbEvaluator
+import android.animation.ValueAnimator
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -50,21 +52,24 @@ class SimpleQuizActivity : AppCompatActivity() {
         if (!isClick) {
             val btn = findViewById<Button>(l.id)
             if (l.getTag() == correctAnswer) {
-                btn.setTextColor(Color.GREEN)
+//                btn.setTextColor(Color.GREEN)
                 score += 10
                 tvScore.text = "Score: $score"
                 val handler = Handler()
                 handler.postDelayed({
                     generateQuestion()
                 }, 1500)
+                correctAnswerAnimation(btn)
             } else {
-                btn.setTextColor(Color.RED)
+//                btn.setTextColor(Color.RED)
                 val intent = Intent(this, EndGameActivity::class.java)
                 intent.putExtra("score", score)
                 val handler = Handler()
                 handler.postDelayed({
                     startActivity(intent)
+                    finish()
                 }, 1500)
+                wrongAnswerAnimation(btn)
             }
             isClick = true
         }
@@ -93,15 +98,57 @@ class SimpleQuizActivity : AppCompatActivity() {
         tvQuestion.text = "What is capital of ${countries[questionRandomIndex]}?"
         answerOne.text = countries[answers[0]]
         answerOne.tag = answers[0]
-        answerOne.setTextColor(Color.BLACK)
+        answerOne.setTextColor(resources.getColor(R.color.colorA))
+        answerOne.setBackgroundDrawable(resources.getDrawable(R.drawable.btn_custom))
         answerTwo.text = countries[answers[1]]
         answerTwo.tag = answers[1]
-        answerTwo.setTextColor(Color.BLACK)
+        answerTwo.setTextColor(resources.getColor(R.color.colorA))
+        answerTwo.setBackgroundDrawable(resources.getDrawable(R.drawable.btn_custom))
         answerThree.text = countries[answers[2]]
         answerThree.tag = answers[2]
-        answerThree.setTextColor(Color.BLACK)
+        answerThree.setTextColor(resources.getColor(R.color.colorA))
+        answerThree.setBackgroundDrawable(resources.getDrawable(R.drawable.btn_custom))
         answerFour.text = countries[answers[3]]
         answerFour.tag = answers[3]
-        answerFour.setTextColor(Color.BLACK)
+        answerFour.setTextColor(resources.getColor(R.color.colorA))
+        answerFour.setBackgroundDrawable(resources.getDrawable(R.drawable.btn_custom))
+    }
+
+    private fun wrongAnswerAnimation(view: View) {
+        val colorAnimation =
+            ValueAnimator.ofObject(ArgbEvaluator(), Color.WHITE, Color.RED)
+        colorAnimation.duration = 300L
+        colorAnimation.addUpdateListener { animator ->
+            view.setBackgroundColor(animator.animatedValue as Int)
+        }
+        colorAnimation.start()
+
+        val textColorAnim =
+            ValueAnimator.ofObject(ArgbEvaluator(), resources.getColor(R.color.colorA), Color.WHITE)
+        textColorAnim.duration = 300L
+        textColorAnim.addUpdateListener { animator ->
+            val btn: Button = view as Button
+            btn.setTextColor(animator.animatedValue as Int)
+        }
+        textColorAnim.start()
+    }
+
+    private fun correctAnswerAnimation(view: View) {
+        val colorAnimation =
+            ValueAnimator.ofObject(ArgbEvaluator(), Color.WHITE, Color.GREEN)
+        colorAnimation.duration = 300L
+        colorAnimation.addUpdateListener { animator ->
+            view.setBackgroundColor(animator.animatedValue as Int)
+        }
+        colorAnimation.start()
+
+        val textColorAnim =
+            ValueAnimator.ofObject(ArgbEvaluator(), resources.getColor(R.color.colorA), Color.WHITE)
+        textColorAnim.duration = 300L
+        textColorAnim.addUpdateListener { animator ->
+            val btn: Button = view as Button
+            btn.setTextColor(animator.animatedValue as Int)
+        }
+        textColorAnim.start()
     }
 }
