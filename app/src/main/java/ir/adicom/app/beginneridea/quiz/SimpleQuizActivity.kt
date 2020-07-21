@@ -13,6 +13,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import ir.adicom.app.beginneridea.R
+import java.util.*
 import kotlin.math.floor
 
 class SimpleQuizActivity : AppCompatActivity() {
@@ -23,9 +24,10 @@ class SimpleQuizActivity : AppCompatActivity() {
     lateinit var answerFour: Button
     lateinit var tvScore: TextView
     lateinit var answers: MutableList<Int>
-    lateinit var tvQuestion: TextView
+    private lateinit var tvQuestion: TextView
     lateinit var wrongAnimation: Animation
-    var correctAnswer: Int = 0
+    private val questionArray = mutableListOf<Int>()
+    private var correctAnswer: Int = 0
     var score: Int = 0
     var questionRandomIndex: Int = 0
     var isClick = false
@@ -49,16 +51,15 @@ class SimpleQuizActivity : AppCompatActivity() {
         answerFour.setOnClickListener(::btnOnClick)
 
         tvScore = findViewById(R.id.tv_score)
-        tvScore.text = "Score: $score"
+        tvScore.text = String.format(Locale.ENGLISH, "Score: %s", score.toString())
     }
 
     private fun btnOnClick(l: View) {
         if (!isClick) {
             val btn = findViewById<Button>(l.id)
-            if (l.getTag() == correctAnswer) {
-//                btn.setTextColor(Color.GREEN)
+            if (l.tag == correctAnswer) {
                 score += 10
-                tvScore.text = "Score: $score"
+                tvScore.text = String.format(Locale.ENGLISH, "Score: %s", score.toString())
                 val handler = Handler()
                 handler.postDelayed({
                     generateQuestion()
@@ -84,19 +85,25 @@ class SimpleQuizActivity : AppCompatActivity() {
     private fun showCorrectAnswer() {
         val arrayOfButton = arrayOf(answerOne, answerTwo, answerThree, answerFour)
         for (btn in arrayOfButton) {
-            if (btn.getTag() == correctAnswer) {
+            if (btn.tag == correctAnswer) {
                 correctAnswerAnimation(btn)
             }
         }
+    }
+
+    private fun isQuestionDuplicate(id: Int): Boolean {
+        return questionArray.contains(id)
     }
 
     private fun generateQuestion() {
         isClick = false
 
         questionRandomIndex = floor(Math.random() * countries.size).toInt()
-        while (questionRandomIndex % 2 == 1) {
+        while (questionRandomIndex % 2 == 1 || isQuestionDuplicate(questionRandomIndex)) {
             questionRandomIndex = floor(Math.random() * countries.size).toInt()
         }
+        questionArray.add(questionRandomIndex)
+        questionArray.sort()
 
         answers = mutableListOf()
         correctAnswer = questionRandomIndex + 1
@@ -110,7 +117,8 @@ class SimpleQuizActivity : AppCompatActivity() {
         }
         answers.shuffle()
 
-        tvQuestion.text = "What is capital of ${countries[questionRandomIndex]}?"
+        tvQuestion.text =
+            String.format(Locale.ENGLISH, "What is capital of %s?", countries[questionRandomIndex])
         answerOne.text = countries[answers[0]]
         answerOne.tag = answers[0]
         answerOne.setTextColor(resources.getColor(R.color.colorA))
