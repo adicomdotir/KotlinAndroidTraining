@@ -7,6 +7,8 @@ import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +24,7 @@ class SimpleQuizActivity : AppCompatActivity() {
     lateinit var tvScore: TextView
     lateinit var answers: MutableList<Int>
     lateinit var tvQuestion: TextView
+    lateinit var wrongAnimation: Animation
     var correctAnswer: Int = 0
     var score: Int = 0
     var questionRandomIndex: Int = 0
@@ -31,12 +34,13 @@ class SimpleQuizActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_simple_quiz)
 
+        wrongAnimation = AnimationUtils.loadAnimation(this, R.anim.wrong_animation)
+
         tvQuestion = findViewById(R.id.tv_question)
         answerOne = findViewById(R.id.btn_one)
         answerTwo = findViewById(R.id.btn_two)
         answerThree = findViewById(R.id.btn_three)
         answerFour = findViewById(R.id.btn_four)
-
         generateQuestion()
 
         answerOne.setOnClickListener(::btnOnClick)
@@ -70,6 +74,7 @@ class SimpleQuizActivity : AppCompatActivity() {
                     finish()
                 }, 1500)
                 wrongAnswerAnimation(btn)
+                btn.startAnimation(wrongAnimation)
             }
             isClick = true
         }
