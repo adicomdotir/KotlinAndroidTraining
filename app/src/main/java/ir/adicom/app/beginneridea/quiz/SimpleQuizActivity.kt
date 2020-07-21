@@ -74,9 +74,19 @@ class SimpleQuizActivity : AppCompatActivity() {
                     finish()
                 }, 1500)
                 wrongAnswerAnimation(btn)
+                showCorrectAnswer()
                 btn.startAnimation(wrongAnimation)
             }
             isClick = true
+        }
+    }
+
+    private fun showCorrectAnswer() {
+        val arrayOfButton = arrayOf(answerOne, answerTwo, answerThree, answerFour)
+        for (btn in arrayOfButton) {
+            if (btn.getTag() == correctAnswer) {
+                correctAnswerAnimation(btn)
+            }
         }
     }
 
@@ -121,7 +131,11 @@ class SimpleQuizActivity : AppCompatActivity() {
 
     private fun wrongAnswerAnimation(view: View) {
         val colorAnimation =
-            ValueAnimator.ofObject(ArgbEvaluator(), Color.WHITE, Color.RED)
+            ValueAnimator.ofObject(
+                ArgbEvaluator(),
+                Color.WHITE,
+                resources.getColor(R.color.wrongAnswer)
+            )
         colorAnimation.duration = 300L
         colorAnimation.addUpdateListener { animator ->
             view.setBackgroundColor(animator.animatedValue as Int)
@@ -140,7 +154,11 @@ class SimpleQuizActivity : AppCompatActivity() {
 
     private fun correctAnswerAnimation(view: View) {
         val colorAnimation =
-            ValueAnimator.ofObject(ArgbEvaluator(), Color.WHITE, Color.GREEN)
+            ValueAnimator.ofObject(
+                ArgbEvaluator(),
+                Color.WHITE,
+                resources.getColor(R.color.correctAnswer)
+            )
         colorAnimation.duration = 300L
         colorAnimation.addUpdateListener { animator ->
             view.setBackgroundColor(animator.animatedValue as Int)

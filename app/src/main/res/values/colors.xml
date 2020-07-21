@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorA">#008577</color>
+    <color name="correctAnswer">#8cc63e</color>
+    <color name="wrongAnswer">#ed1b24</color>
 </resources>
