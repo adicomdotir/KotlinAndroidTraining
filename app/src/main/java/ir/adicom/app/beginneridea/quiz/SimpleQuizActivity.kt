@@ -2,19 +2,24 @@ package ir.adicom.app.beginneridea.quiz
 
 import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
+import android.text.Editable
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import ir.adicom.app.beginneridea.R
 import java.util.*
 import kotlin.math.floor
+
 
 class SimpleQuizActivity : AppCompatActivity() {
 
@@ -23,6 +28,7 @@ class SimpleQuizActivity : AppCompatActivity() {
     lateinit var answerThree: Button
     lateinit var answerFour: Button
     lateinit var tvScore: TextView
+    lateinit var tvUsername: TextView
     lateinit var answers: MutableList<Int>
     private lateinit var tvQuestion: TextView
     lateinit var wrongAnimation: Animation
@@ -31,10 +37,13 @@ class SimpleQuizActivity : AppCompatActivity() {
     var score: Int = 0
     var questionRandomIndex: Int = 0
     var isClick = false
+    var userName = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_simple_quiz)
+
+        getUsername()
 
         wrongAnimation = AnimationUtils.loadAnimation(this, R.anim.wrong_animation)
 
@@ -51,7 +60,29 @@ class SimpleQuizActivity : AppCompatActivity() {
         answerFour.setOnClickListener(::btnOnClick)
 
         tvScore = findViewById(R.id.tv_score)
+        tvUsername = findViewById(R.id.tv_username)
         tvScore.text = String.format(Locale.ENGLISH, "Score: %s", score.toString())
+    }
+
+    private fun getUsername() {
+        val alert: AlertDialog.Builder = AlertDialog.Builder(this)
+        alert.setTitle("What is your name?")
+        val input = EditText(this)
+        val rand: Int = (floor(Math.random() * 89999) + 10000).toInt()
+        input.text = Editable.Factory.getInstance().newEditable("Player$rand")
+        alert.setView(input)
+
+        alert.setPositiveButton("Confirm",
+            DialogInterface.OnClickListener { dialog, whichButton ->
+                userName = input.text.toString()
+                if (userName.trim().isEmpty()) {
+                    val randNumber: Int = (floor(Math.random() * 89999) + 10000).toInt()
+                    userName = "Player$randNumber"
+                }
+                tvUsername.text = userName
+                return@OnClickListener
+            })
+        alert.show()
     }
 
     private fun btnOnClick(l: View) {
@@ -69,6 +100,7 @@ class SimpleQuizActivity : AppCompatActivity() {
 //                btn.setTextColor(Color.RED)
                 val intent = Intent(this, EndGameActivity::class.java)
                 intent.putExtra("score", score)
+                intent.putExtra("username", userName)
                 val handler = Handler()
                 handler.postDelayed({
                     startActivity(intent)

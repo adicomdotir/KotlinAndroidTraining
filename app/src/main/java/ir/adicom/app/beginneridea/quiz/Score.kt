@@ -10,4 +10,8 @@ class Score {
         this.username = username
         this.score = score
     }
+
+    override fun toString(): String {
+        return "[id: $id, username: $username, score: $score]"
+    }
 }

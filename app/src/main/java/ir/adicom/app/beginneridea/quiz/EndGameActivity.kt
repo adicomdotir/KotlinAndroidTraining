@@ -1,6 +1,7 @@
 package ir.adicom.app.beginneridea.quiz
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -16,11 +17,13 @@ class EndGameActivity : AppCompatActivity() {
         val db = DatabaseHandler(this)
 
         val tvResult = findViewById<TextView>(R.id.tv_result)
-        val score = intent.extras.getInt("score").toString()
-        tvResult.text = "Your Score is $score"
+        val score = intent?.extras?.getInt("score")
+        val userName = intent?.extras?.getString("username")
+        tvResult.text = String.format("Your score is %s", score)
 
         val scoreModel = Score()
-        scoreModel.setScore(0, "Unknown", score.toInt())
+        scoreModel.setScore(0, userName!!, score!!)
+        Log.e("TAG", scoreModel.toString())
         if (!db.addScore(scoreModel)) {
             Toast.makeText(this, "Error in saving score in db!", Toast.LENGTH_SHORT).show()
         }
