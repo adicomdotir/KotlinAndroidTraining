@@ -10,7 +10,7 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DB_NAME, nul
     override fun onCreate(db: SQLiteDatabase) {
         val createTable = "CREATE TABLE $TABLE_NAME (" +
                 ID + " INTEGER PRIMARY KEY," +
-                SCORE + " TEXT," +
+                SCORE + " INTEGER," +
                 USERNAME + " TEXT);"
         db.execSQL(createTable)
     }
@@ -23,7 +23,7 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DB_NAME, nul
 
     companion object {
 
-        private const val DB_VERSION = 1
+        private const val DB_VERSION = 2
         private const val DB_NAME = "MyDataBase"
         private const val TABLE_NAME = "QuizzHighScores"
         private const val ID = "Id"
@@ -34,16 +34,17 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DB_NAME, nul
     fun getAll(): List<Score> {
         val scoreList = ArrayList<Score>()
         val db = writableDatabase
-        val selectQuery = "SELECT  * FROM $TABLE_NAME ORDER BY $SCORE DESC"
+        val selectQuery = "SELECT * FROM $TABLE_NAME ORDER BY $SCORE DESC LIMIT 10"
         val cursor = db.rawQuery(selectQuery, null)
         if (cursor != null) {
-            cursor.moveToFirst()
-            while (cursor.moveToNext()) {
-                val score = Score()
-                score.id = Integer.parseInt(cursor.getString(cursor.getColumnIndex(ID)))
-                score.username = cursor.getString(cursor.getColumnIndex(USERNAME))
-                score.score = Integer.parseInt(cursor.getString(cursor.getColumnIndex(SCORE)))
-                scoreList.add(score)
+            if (cursor.moveToFirst()) {
+                do {
+                    val score = Score()
+                    score.id = Integer.parseInt(cursor.getString(cursor.getColumnIndex(ID)))
+                    score.username = cursor.getString(cursor.getColumnIndex(USERNAME))
+                    score.score = Integer.parseInt(cursor.getString(cursor.getColumnIndex(SCORE)))
+                    scoreList.add(score)
+                } while (cursor.moveToNext())
             }
         }
         cursor.close()
