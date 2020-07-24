@@ -1,12 +1,10 @@
 package ir.adicom.app.beginneridea.quiz
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import ir.adicom.app.beginneridea.R
-
 
 class EndGameActivity : AppCompatActivity() {
 
@@ -23,18 +21,27 @@ class EndGameActivity : AppCompatActivity() {
 
         val scoreModel = Score()
         scoreModel.setScore(0, userName!!, score!!)
-        Log.e("TAG", scoreModel.toString())
         if (!db.addScore(scoreModel)) {
             Toast.makeText(this, "Error in saving score in db!", Toast.LENGTH_SHORT).show()
         }
         val scoreList = db.getAll()
 
-        val lvHighScore = findViewById<TextView>(R.id.tv_high_scores)
-        val sb = StringBuilder()
-        sb.append("High Scores").append('\n')
+        val tvRowNumber = findViewById<TextView>(R.id.tv_row_number)
+        val tvUserName = findViewById<TextView>(R.id.tv_username)
+        val tvScore = findViewById<TextView>(R.id.tv_score)
+        val sbRowNumber = StringBuilder()
+        val sbUserName = StringBuilder()
+        val sbScore = StringBuilder()
+        sbRowNumber.append("#").append('\n').append('\n')
+        sbUserName.append("Name").append('\n').append('\n')
+        sbScore.append("Score").append('\n').append('\n')
         for ((index, value) in scoreList.withIndex()) {
-            sb.append("${index + 1}.${value.username}    ${value.score}").append("\n")
+            sbRowNumber.append("${index + 1}").append('\n')
+            sbUserName.append(value.username).append('\n')
+            sbScore.append("${value.score}").append('\n')
         }
-        lvHighScore.text = sb.toString()
+        tvRowNumber.text = sbRowNumber
+        tvUserName.text = sbUserName
+        tvScore.text = sbScore
     }
 }

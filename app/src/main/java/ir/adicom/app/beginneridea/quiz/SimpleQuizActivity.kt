@@ -13,6 +13,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -67,10 +68,21 @@ class SimpleQuizActivity : AppCompatActivity() {
     private fun getUsername() {
         val alert: AlertDialog.Builder = AlertDialog.Builder(this)
         alert.setTitle("What is your name?")
+        alert.setCancelable(false)
+        val linearLayout = LinearLayout(this)
+        linearLayout.setPadding(32, 0, 32, 0)
         val input = EditText(this)
+
+        val lp = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.MATCH_PARENT
+        )
+        input.layoutParams = lp
+
         val rand: Int = (floor(Math.random() * 89999) + 10000).toInt()
         input.text = Editable.Factory.getInstance().newEditable("Player$rand")
-        alert.setView(input)
+        linearLayout.addView(input)
+        alert.setView(linearLayout)
 
         alert.setPositiveButton("Confirm",
             DialogInterface.OnClickListener { dialog, whichButton ->
@@ -176,7 +188,7 @@ class SimpleQuizActivity : AppCompatActivity() {
                 Color.WHITE,
                 resources.getColor(R.color.wrongAnswer)
             )
-        colorAnimation.duration = 300L
+        colorAnimation.duration = 250L
         colorAnimation.addUpdateListener { animator ->
             view.setBackgroundColor(animator.animatedValue as Int)
         }
@@ -184,7 +196,7 @@ class SimpleQuizActivity : AppCompatActivity() {
 
         val textColorAnim =
             ValueAnimator.ofObject(ArgbEvaluator(), resources.getColor(R.color.colorA), Color.WHITE)
-        textColorAnim.duration = 300L
+        textColorAnim.duration = 250L
         textColorAnim.addUpdateListener { animator ->
             val btn: Button = view as Button
             btn.setTextColor(animator.animatedValue as Int)
@@ -199,7 +211,7 @@ class SimpleQuizActivity : AppCompatActivity() {
                 Color.WHITE,
                 resources.getColor(R.color.correctAnswer)
             )
-        colorAnimation.duration = 300L
+        colorAnimation.duration = 250L
         colorAnimation.addUpdateListener { animator ->
             view.setBackgroundColor(animator.animatedValue as Int)
         }
@@ -207,7 +219,7 @@ class SimpleQuizActivity : AppCompatActivity() {
 
         val textColorAnim =
             ValueAnimator.ofObject(ArgbEvaluator(), resources.getColor(R.color.colorA), Color.WHITE)
-        textColorAnim.duration = 300L
+        textColorAnim.duration = 250L
         textColorAnim.addUpdateListener { animator ->
             val btn: Button = view as Button
             btn.setTextColor(animator.animatedValue as Int)
