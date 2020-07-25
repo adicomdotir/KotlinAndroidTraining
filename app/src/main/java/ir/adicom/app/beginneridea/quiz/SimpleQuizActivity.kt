@@ -53,7 +53,6 @@ class SimpleQuizActivity : AppCompatActivity() {
         answerTwo = findViewById(R.id.btn_two)
         answerThree = findViewById(R.id.btn_three)
         answerFour = findViewById(R.id.btn_four)
-        generateQuestion()
 
         answerOne.setOnClickListener(::btnOnClick)
         answerTwo.setOnClickListener(::btnOnClick)
@@ -92,9 +91,19 @@ class SimpleQuizActivity : AppCompatActivity() {
                     userName = "Player$randNumber"
                 }
                 tvUsername.text = userName
+                visibileQuestionAndAnswer()
+                generateQuestion()
                 return@OnClickListener
             })
         alert.show()
+    }
+
+    private fun visibileQuestionAndAnswer() {
+        tvQuestion.visibility = View.VISIBLE
+        answerOne.visibility = View.VISIBLE
+        answerTwo.visibility = View.VISIBLE
+        answerThree.visibility = View.VISIBLE
+        answerFour.visibility = View.VISIBLE
     }
 
     private fun btnOnClick(l: View) {
@@ -124,6 +133,12 @@ class SimpleQuizActivity : AppCompatActivity() {
             }
             isClick = true
         }
+    }
+
+    private fun pushRightInAnimation(view: View) {
+        val animFadein =
+            AnimationUtils.loadAnimation(applicationContext, R.anim.push_left_in)
+        view.startAnimation(animFadein)
     }
 
     private fun showCorrectAnswer() {
@@ -163,22 +178,27 @@ class SimpleQuizActivity : AppCompatActivity() {
 
         tvQuestion.text =
             String.format(Locale.ENGLISH, "What is capital of %s?", countries[questionRandomIndex])
+        pushRightInAnimation(tvQuestion)
         answerOne.text = countries[answers[0]]
         answerOne.tag = answers[0]
         answerOne.setTextColor(resources.getColor(R.color.colorA))
         answerOne.setBackgroundDrawable(resources.getDrawable(R.drawable.btn_custom))
+        pushRightInAnimation(answerOne)
         answerTwo.text = countries[answers[1]]
         answerTwo.tag = answers[1]
         answerTwo.setTextColor(resources.getColor(R.color.colorA))
         answerTwo.setBackgroundDrawable(resources.getDrawable(R.drawable.btn_custom))
+        pushRightInAnimation(answerTwo)
         answerThree.text = countries[answers[2]]
         answerThree.tag = answers[2]
         answerThree.setTextColor(resources.getColor(R.color.colorA))
         answerThree.setBackgroundDrawable(resources.getDrawable(R.drawable.btn_custom))
+        pushRightInAnimation(answerThree)
         answerFour.text = countries[answers[3]]
         answerFour.tag = answers[3]
         answerFour.setTextColor(resources.getColor(R.color.colorA))
         answerFour.setBackgroundDrawable(resources.getDrawable(R.drawable.btn_custom))
+        pushRightInAnimation(answerFour)
     }
 
     private fun wrongAnswerAnimation(view: View) {
