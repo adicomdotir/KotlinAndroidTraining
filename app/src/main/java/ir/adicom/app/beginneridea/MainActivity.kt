@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import ir.adicom.app.beginneridea.bin2dec.Bin2DecActivity
+import ir.adicom.app.beginneridea.coroutine.CoroutineSampleActivity
 import ir.adicom.app.beginneridea.quiz.SimpleQuizActivity
 import ir.adicom.app.beginneridea.rgb2hex.ColorToHexActivity
 
@@ -29,6 +30,12 @@ class MainActivity : AppCompatActivity() {
         val quizAppBtn = findViewById<Button>(R.id.btn_quiz_app)
         quizAppBtn.setOnClickListener {
             val intent = Intent(this, SimpleQuizActivity::class.java)
+            startActivity(intent)
+        }
+
+        val coroutineBtn = findViewById<Button>(R.id.btn_coroutine)
+        coroutineBtn.setOnClickListener {
+            val intent = Intent(this, CoroutineSampleActivity::class.java)
             startActivity(intent)
         }
     }

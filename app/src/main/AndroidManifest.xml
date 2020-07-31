@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ir.adicom.app.beginneridea">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".quiz.EndGameActivity"></activity>
+        <activity android:name=".coroutine.CoroutineSampleActivity"></activity>
+        <activity android:name=".quiz.EndGameActivity" />
         <activity android:name=".quiz.SimpleQuizActivity" />
         <activity android:name=".rgb2hex.ColorToHexActivity" />
         <activity android:name=".bin2dec.Bin2DecActivity" />
