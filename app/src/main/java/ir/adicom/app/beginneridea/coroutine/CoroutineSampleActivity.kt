@@ -1,7 +1,6 @@
 package ir.adicom.app.beginneridea.coroutine
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -27,11 +26,14 @@ class CoroutineSampleActivity : AppCompatActivity() {
         tvMessage.text = "Fetching data ..."
 
         CoroutineScope(Dispatchers.Default).launch {
-            val count = gr.getTodo().size
-            Log.e("TAG", count.toString())
+            val repoList = gr.getTodo().take(10)
+            val sb = StringBuilder()
+            for (repo in repoList) {
+                sb.append(repo.name).append("\n")
+            }
 
             withContext(Dispatchers.Main) {
-                tvMessage.text = "Count $count"
+                tvMessage.text = sb.toString()
                 progressBar.visibility = View.INVISIBLE
 
             }

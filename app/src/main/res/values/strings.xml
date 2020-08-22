@@ -8,4 +8,5 @@
     <string name="rgb2hex">RGB2Hex</string>
     <string name="quiz_app">Quiz App</string>
     <string name="coroutine">Coroutine</string>
+    <string name="task_app">Task App</string>
 </resources>

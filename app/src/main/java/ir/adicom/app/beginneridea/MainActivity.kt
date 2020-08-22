@@ -8,6 +8,8 @@ import ir.adicom.app.beginneridea.bin2dec.Bin2DecActivity
 import ir.adicom.app.beginneridea.coroutine.CoroutineSampleActivity
 import ir.adicom.app.beginneridea.quiz.SimpleQuizActivity
 import ir.adicom.app.beginneridea.rgb2hex.ColorToHexActivity
+import ir.adicom.app.beginneridea.taskappmvvm.TasksActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,6 +38,12 @@ class MainActivity : AppCompatActivity() {
         val coroutineBtn = findViewById<Button>(R.id.btn_coroutine)
         coroutineBtn.setOnClickListener {
             val intent = Intent(this, CoroutineSampleActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Using kotlin extension for binding
+        btn_task_app.setOnClickListener {
+            val intent = Intent(this, TasksActivity::class.java)
             startActivity(intent)
         }
     }
