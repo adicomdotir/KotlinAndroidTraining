@@ -8,7 +8,7 @@ import ir.adicom.app.beginneridea.bin2dec.Bin2DecActivity
 import ir.adicom.app.beginneridea.coroutine.CoroutineSampleActivity
 import ir.adicom.app.beginneridea.quiz.SimpleQuizActivity
 import ir.adicom.app.beginneridea.rgb2hex.ColorToHexActivity
-import ir.adicom.app.beginneridea.taskappmvvm.TasksActivity
+import ir.adicom.app.beginneridea.taskappmvvm.ui.tasks.TasksActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

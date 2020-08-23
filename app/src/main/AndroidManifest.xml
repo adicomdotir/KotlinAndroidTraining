@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".taskappmvvm.TasksActivity"></activity>
+        <activity android:name=".taskappmvvm.ui.addedittask.AddEditTaskActivity"></activity>
+        <activity android:name=".taskappmvvm.ui.tasks.TasksActivity" />
         <activity android:name=".coroutine.CoroutineSampleActivity" />
         <activity android:name=".quiz.EndGameActivity" />
         <activity android:name=".quiz.SimpleQuizActivity" />
