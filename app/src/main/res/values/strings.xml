@@ -9,4 +9,6 @@
     <string name="quiz_app">Quiz App</string>
     <string name="coroutine">Coroutine</string>
     <string name="task_app">Task App</string>
+    <string name="title">Title</string>
+    <string name="save">Save</string>
 </resources>

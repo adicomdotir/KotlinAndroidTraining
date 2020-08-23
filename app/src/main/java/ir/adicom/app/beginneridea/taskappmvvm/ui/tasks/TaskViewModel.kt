@@ -10,11 +10,6 @@ import ir.adicom.app.beginneridea.taskappmvvm.data.db.Task
 class TaskViewModel(application: Application) : ViewModel() {
     private val taskRepository = TaskRepository(application)
 
-    init {
-        taskRepository.saveTask(Task(0, "First Task"))
-        taskRepository.saveTask(Task(0, "Second Task"))
-    }
-
     fun getAllTasks(): LiveData<List<Task>>? {
         return taskRepository.getAllTasks()
     }
