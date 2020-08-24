@@ -20,4 +20,8 @@ class AddEditTaskViewModel(application: Application) : ViewModel() {
     fun getTask(id: Int): LiveData<Task>? {
         return taskRepository.getTask(id)
     }
+
+    fun removeTask(task: Task) {
+        taskRepository.removeTask(task)
+    }
 }

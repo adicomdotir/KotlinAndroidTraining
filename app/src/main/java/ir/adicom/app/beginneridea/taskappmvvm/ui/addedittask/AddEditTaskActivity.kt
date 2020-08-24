@@ -1,6 +1,7 @@
 package ir.adicom.app.beginneridea.taskappmvvm.ui.addedittask
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -11,6 +12,7 @@ import ir.adicom.app.beginneridea.taskappmvvm.ui.CustomViewModelFactory
 class AddEditTaskActivity : AppCompatActivity() {
 
     private var id: Int = 0
+    private var task: Task? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +24,11 @@ class AddEditTaskActivity : AppCompatActivity() {
             .get(AddEditTaskViewModel::class.java)
 
         addEditTaskViewModel.getTask(id)?.observe(this, Observer {
-            binding.etTitle.setText(it.title)
+            it?.let {
+                binding.etTitle.setText(it.title)
+                binding.btnDelete.visibility = View.VISIBLE
+                task = it
+            }
         })
 
         binding.btnSave.setOnClickListener {
@@ -33,6 +39,13 @@ class AddEditTaskActivity : AppCompatActivity() {
                 } else {
                     addEditTaskViewModel.updateTask(task)
                 }
+                finish()
+            }
+        }
+
+        binding.btnDelete.setOnClickListener {
+            task?.run {
+                addEditTaskViewModel.removeTask(this)
                 finish()
             }
         }

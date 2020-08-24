@@ -31,4 +31,10 @@ class TaskRepository(application: Application) {
             taskDao?.updateTask(task)
         }
     }
+
+    fun removeTask(task: Task) {
+        GlobalScope.launch {
+            taskDao?.deleteTask(task)
+        }
+    }
 }
