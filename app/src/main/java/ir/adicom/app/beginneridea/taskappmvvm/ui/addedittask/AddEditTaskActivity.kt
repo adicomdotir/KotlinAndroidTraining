@@ -19,7 +19,10 @@ class AddEditTaskActivity : AppCompatActivity() {
         val binding = ActivityAddEditTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.title = "OK"
+
         id = intent.getIntExtra("TASK_ID", 0)
+        setActionBarTitle()
         val addEditTaskViewModel = ViewModelProvider(this, CustomViewModelFactory(application))
             .get(AddEditTaskViewModel::class.java)
 
@@ -52,6 +55,14 @@ class AddEditTaskActivity : AppCompatActivity() {
 
         binding.btnBack.setOnClickListener {
             finish()
+        }
+    }
+
+    fun setActionBarTitle() {
+        if (id == 0) {
+            supportActionBar?.title = "Add Task"
+        } else {
+            supportActionBar?.title = "Edit Task"
         }
     }
 }
