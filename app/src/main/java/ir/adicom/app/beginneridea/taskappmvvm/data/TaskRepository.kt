@@ -21,4 +21,14 @@ class TaskRepository(application: Application) {
             taskDao?.insertTask(task)
         }
     }
+
+    fun getTask(id: Int): LiveData<Task>? {
+        return taskDao?.getTask(id)
+    }
+
+    fun editTask(task: Task) {
+        GlobalScope.launch {
+            taskDao?.updateTask(task)
+        }
+    }
 }
