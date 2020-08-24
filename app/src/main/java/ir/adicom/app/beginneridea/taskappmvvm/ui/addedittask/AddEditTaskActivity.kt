@@ -49,5 +49,9 @@ class AddEditTaskActivity : AppCompatActivity() {
                 finish()
             }
         }
+
+        binding.btnBack.setOnClickListener {
+            finish()
+        }
     }
 }

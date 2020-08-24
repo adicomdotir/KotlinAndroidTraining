@@ -7,4 +7,6 @@
     <color name="correctAnswer">#8cc63e</color>
     <color name="wrongAnswer">#ed1b24</color>
     <color name="black">#000000</color>
+    <color name="red">#F44336</color>
+    <color name="white">#FFFFFF</color>
 </resources>
