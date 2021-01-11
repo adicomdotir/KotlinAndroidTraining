@@ -11,6 +11,5 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4ClassRunner::class)
 class ExampleInstrumentedTest {
     fun is_ok() {
-        ActivityS
     }
 }

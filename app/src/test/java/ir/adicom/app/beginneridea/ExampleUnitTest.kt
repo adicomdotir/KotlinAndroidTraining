@@ -5,40 +5,58 @@ import org.junit.Before
 import org.junit.Test
 
 class ExampleUnitTest {
-    private lateinit var stringCalculator: StringCalculator
+    private lateinit var primeNumbers: PrimeNumbers
 
     @Before
     fun init() {
-        stringCalculator = StringCalculator()
+        primeNumbers = PrimeNumbers()
     }
 
     @Test
-    fun emptyString() {
-        val res = stringCalculator.add("")
-        assertEquals(0, res)
+    fun testOne() {
+        assertEquals(getList(), primeNumbers.generate(1))
     }
 
     @Test
-    fun oneNumberInString() {
-        val res = stringCalculator.add("1")
-        assertEquals(1, res)
+    fun testTwo() {
+        assertEquals(getList(2), primeNumbers.generate(2))
     }
 
     @Test
-    fun twoNumberInString() {
-        val res = stringCalculator.add("1,2")
-        assertEquals(3, res)
+    fun testThree() {
+        assertEquals(getList(3), primeNumbers.generate(3))
     }
 
     @Test
-    fun unknownNumberInString() {
-        val res = stringCalculator.add("1,2,3,4,5")
-        assertEquals(15, res)
+    fun testFour() {
+        assertEquals(getList(2, 2), primeNumbers.generate(4))
     }
 
     @Test
-    fun newLineInString() {
-        val res = stringCalculator.add("1,2\n3")
-        assertEquals(6, res)
+    fun testSix() {
+        assertEquals(getList(2, 3), primeNumbers.generate(6))
+    }
+
+    @Test
+    fun testEight() {
+        assertEquals(getList(2, 2, 2), primeNumbers.generate(8))
+    }
+
+    @Test
+    fun testNine() {
+        assertEquals(getList(3, 3), primeNumbers.generate(9))
+    }
+
+    @Test
+    fun testTen() {
+        assertEquals(getList(2, 5), primeNumbers.generate(10))
+    }
+
+    private fun getList(vararg numbers: Int): MutableList<Int> {
+        val list = mutableListOf<Int>()
+        for (number in numbers) {
+            list.add(number)
+        }
+        return list
     }
 }

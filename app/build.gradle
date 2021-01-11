@@ -6,7 +6,7 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 ext.versionMajor = 1
-ext.versionMinor = 0
+ext.versionMinor = 1
 ext.versionPatch = 0
 ext.versionClassifier = null
 ext.isSnapshot = true
@@ -68,7 +68,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
 
     // Room components
-    def roomVersion = '2.2.5'
+    def roomVersion = '2.2.6'
     implementation "androidx.room:room-runtime:$roomVersion"
     kapt "androidx.room:room-compiler:$roomVersion"
     implementation "androidx.room:room-ktx:$roomVersion"
