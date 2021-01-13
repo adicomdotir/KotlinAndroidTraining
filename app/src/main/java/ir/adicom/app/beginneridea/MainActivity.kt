@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import ir.adicom.app.beginneridea.bin2dec.Bin2DecActivity
 import ir.adicom.app.beginneridea.coroutine.CoroutineSampleActivity
 import ir.adicom.app.beginneridea.dagger.DaggerActivity
+import ir.adicom.app.beginneridea.news.NewsActivity
 import ir.adicom.app.beginneridea.quiz.SimpleQuizActivity
 import ir.adicom.app.beginneridea.rgb2hex.ColorToHexActivity
 import ir.adicom.app.beginneridea.taskappmvvm.ui.tasks.TasksActivity
@@ -50,6 +51,11 @@ class MainActivity : AppCompatActivity() {
 
         btn_dagger.setOnClickListener {
             val intent = Intent(this, DaggerActivity::class.java)
+            startActivity(intent)
+        }
+
+        btn_news.setOnClickListener {
+            val intent = Intent(this, NewsActivity::class.java)
             startActivity(intent)
         }
     }
