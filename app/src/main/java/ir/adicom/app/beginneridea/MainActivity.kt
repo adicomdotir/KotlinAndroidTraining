@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import ir.adicom.app.beginneridea.bin2dec.Bin2DecActivity
+import ir.adicom.app.beginneridea.boutique.BoutiqueActivity
 import ir.adicom.app.beginneridea.coroutine.CoroutineSampleActivity
 import ir.adicom.app.beginneridea.dagger.DaggerActivity
 import ir.adicom.app.beginneridea.news.NewsActivity
@@ -56,6 +57,11 @@ class MainActivity : AppCompatActivity() {
 
         btn_news.setOnClickListener {
             val intent = Intent(this, NewsActivity::class.java)
+            startActivity(intent)
+        }
+
+        btn_boutique.setOnClickListener {
+            val intent = Intent(this, BoutiqueActivity::class.java)
             startActivity(intent)
         }
     }

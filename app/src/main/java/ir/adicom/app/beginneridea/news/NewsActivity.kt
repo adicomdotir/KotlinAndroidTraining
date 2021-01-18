@@ -3,7 +3,6 @@ package ir.adicom.app.beginneridea.news
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import ir.adicom.app.beginneridea.R
 import ir.adicom.app.beginneridea.databinding.ActivityNewsBinding
 
 class NewsActivity : AppCompatActivity() {
@@ -11,7 +10,10 @@ class NewsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_news)
+//        setContentView(R.layout.activity_news)
+
+        binding = ActivityNewsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val adapter = NewsAdapter(DataFakeGenerator.getData(this))
         binding.recycleViewNews.adapter = adapter

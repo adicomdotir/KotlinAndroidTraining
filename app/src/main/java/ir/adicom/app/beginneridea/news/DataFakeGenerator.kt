@@ -4,7 +4,7 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import androidx.core.content.res.ResourcesCompat
 import ir.adicom.app.beginneridea.R
-import java.util.*
+import ir.adicom.app.beginneridea.boutique.Cloth
 
 
 /**
@@ -32,5 +32,28 @@ object DataFakeGenerator {
             posts.add(post)
         }
         return posts
+    }
+
+    fun getClothes(context: Context): List<Cloth> {
+        val clothes: MutableList<Cloth> = ArrayList()
+        for (i in 1..8) {
+            val image: Drawable? = when (i) {
+                1 -> ResourcesCompat.getDrawable(context.resources, R.drawable.pic1_clothes, null)
+                2 -> ResourcesCompat.getDrawable(context.resources, R.drawable.pic2__clothes, null)
+                3 -> ResourcesCompat.getDrawable(context.resources, R.drawable.pic3_clothes, null)
+                4 -> ResourcesCompat.getDrawable(context.resources, R.drawable.pic4_clothes, null)
+                5 -> ResourcesCompat.getDrawable(context.resources, R.drawable.pic5_clothes, null)
+                6 -> ResourcesCompat.getDrawable(context.resources, R.drawable.pic6_clothes, null)
+                7 -> ResourcesCompat.getDrawable(context.resources, R.drawable.pic7_clothes, null)
+                else -> ResourcesCompat.getDrawable(
+                    context.resources,
+                    R.drawable.pic8_clothes,
+                    null
+                )
+            }
+            val cloth = Cloth(i, "لورم ایپسوم متن ساختگی", "666", image!!)
+            clothes.add(cloth)
+        }
+        return clothes
     }
 }
