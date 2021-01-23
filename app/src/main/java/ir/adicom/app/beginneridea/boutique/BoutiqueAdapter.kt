@@ -8,28 +8,28 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ir.adicom.app.beginneridea.R
 
-class BoutiqueAdapter(val boutiqueList: List<Cloth>) :
-    RecyclerView.Adapter<BoutiqueAdapter.BoutiqueViewHolder>() {
-    class BoutiqueViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val ivBoutiqueImage = itemView.findViewById<ImageView>(R.id.iv_boutique)
-        val tvBoutiqueTitle = itemView.findViewById<TextView>(R.id.tv_boutique_title)
-        val tvBoutiqueCount = itemView.findViewById<TextView>(R.id.tv_boutique_count)
+class BoutiqueAdapter(val clothesList: List<Cloth>) :
+    RecyclerView.Adapter<BoutiqueAdapter.ViewHolder>() {
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val ivImage = view.findViewById<ImageView>(R.id.iv_boutique)
+        val tvTitle = view.findViewById<TextView>(R.id.tv_boutique_title)
+        val tvCount = view.findViewById<TextView>(R.id.tv_boutique_count)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BoutiqueViewHolder {
-        val view: View =
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view =
             LayoutInflater.from(parent.context).inflate(R.layout.boutique_item, parent, false)
-        return BoutiqueViewHolder(view)
+        return ViewHolder(view)
     }
 
     override fun getItemCount(): Int {
-        return boutiqueList.size
+        return clothesList.size
     }
 
-    override fun onBindViewHolder(holder: BoutiqueViewHolder, position: Int) {
-        val cloth = boutiqueList[position]
-        holder.ivBoutiqueImage.setImageDrawable(cloth.source)
-        holder.tvBoutiqueCount.text = cloth.count
-        holder.tvBoutiqueTitle.text = cloth.title
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val cloth = clothesList[position]
+        holder.ivImage.setImageDrawable(cloth.source)
+        holder.tvCount.text = cloth.count
+        holder.tvTitle.text = cloth.title
     }
 }

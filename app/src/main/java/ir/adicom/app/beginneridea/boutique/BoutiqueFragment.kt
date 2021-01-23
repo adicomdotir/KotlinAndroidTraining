@@ -20,9 +20,10 @@ class BoutiqueFragment : Fragment() {
     ): View? {
         fragmentView = inflater.inflate(R.layout.fragment_boutique, container, false)
         recyclerView = fragmentView.findViewById(R.id.rv_boutique)
-        recyclerView.adapter = BoutiqueAdapter(DataFakeGenerator.getClothes(this.context!!))
+
         recyclerView.layoutManager =
             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        recyclerView.adapter = BoutiqueAdapter(DataFakeGenerator.getClothes(context!!))
         return fragmentView
     }
 

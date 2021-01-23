@@ -8,6 +8,7 @@ import ir.adicom.app.beginneridea.bin2dec.Bin2DecActivity
 import ir.adicom.app.beginneridea.boutique.BoutiqueActivity
 import ir.adicom.app.beginneridea.coroutine.CoroutineSampleActivity
 import ir.adicom.app.beginneridea.dagger.DaggerActivity
+import ir.adicom.app.beginneridea.databinding.ActivityMainBinding
 import ir.adicom.app.beginneridea.news.NewsActivity
 import ir.adicom.app.beginneridea.quiz.SimpleQuizActivity
 import ir.adicom.app.beginneridea.rgb2hex.ColorToHexActivity
@@ -18,7 +19,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+//        setContentView(R.layout.activity_main)
+
+        val activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(activityMainBinding.root)
 
         val bin2decBtn = findViewById<Button>(R.id.btn_bin2dec)
         bin2decBtn.setOnClickListener {
@@ -60,7 +64,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        btn_boutique.setOnClickListener {
+        // Using view binding for binding
+        activityMainBinding.btnBoutique.setOnClickListener {
             val intent = Intent(this, BoutiqueActivity::class.java)
             startActivity(intent)
         }

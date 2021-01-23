@@ -11,10 +11,9 @@ class BoutiqueActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_boutique)
 
-        val clothesViewPagerAdapter = ClothesViewPagerAdapter(supportFragmentManager)
-        val viewpager = findViewById<ViewPager>(R.id.viewpager)
-        viewpager.adapter = clothesViewPagerAdapter
+        val viewPager = findViewById<ViewPager>(R.id.viewpager)
         val tabLayout = findViewById<TabLayout>(R.id.tablayout)
-        tabLayout.setupWithViewPager(viewpager)
+        tabLayout.setupWithViewPager(viewPager)
+        viewPager.adapter = ClothesViewPagerAdapter(supportFragmentManager)
     }
 }
