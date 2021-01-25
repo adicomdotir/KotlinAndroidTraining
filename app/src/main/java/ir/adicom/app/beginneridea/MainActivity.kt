@@ -12,6 +12,7 @@ import ir.adicom.app.beginneridea.databinding.ActivityMainBinding
 import ir.adicom.app.beginneridea.news.NewsActivity
 import ir.adicom.app.beginneridea.quiz.SimpleQuizActivity
 import ir.adicom.app.beginneridea.rgb2hex.ColorToHexActivity
+import ir.adicom.app.beginneridea.shopping_list.ShoppingActivity
 import ir.adicom.app.beginneridea.taskappmvvm.ui.tasks.TasksActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -67,6 +68,12 @@ class MainActivity : AppCompatActivity() {
         // Using view binding for binding
         activityMainBinding.btnBoutique.setOnClickListener {
             val intent = Intent(this, BoutiqueActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Using view binding for binding
+        activityMainBinding.btnShoppingList.setOnClickListener {
+            val intent = Intent(this, ShoppingActivity::class.java)
             startActivity(intent)
         }
     }
