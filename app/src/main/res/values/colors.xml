@@ -9,4 +9,5 @@
     <color name="black">#000000</color>
     <color name="red">#F44336</color>
     <color name="white">#FFFFFF</color>
+    <color name="colorPurple">#4a148c</color>
 </resources>
