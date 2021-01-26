@@ -3,13 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:padding="16dp">
 
     <TextView
         android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        tools:text="Bananas"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -17,7 +20,9 @@
         android:id="@+id/tv_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        tools:text="33"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,7 +33,7 @@
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_name"
-        app:srcCompat="@drawable/abc_vector_test" />
+        android:src="@drawable/ic_delete" />
 
     <ImageView
         android:id="@+id/iv_plus"
@@ -38,7 +43,7 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toStartOf="@+id/iv_minus"
         app:layout_constraintTop_toBottomOf="@+id/tv_amount"
-        app:srcCompat="@drawable/abc_vector_test" />
+        android:src="@drawable/ic_add" />
 
     <ImageView
         android:id="@+id/iv_minus"
@@ -47,5 +52,5 @@
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_amount"
-        app:srcCompat="@drawable/abc_vector_test" />
+        android:src="@drawable/ic_minus" />
 </androidx.constraintlayout.widget.ConstraintLayout>
