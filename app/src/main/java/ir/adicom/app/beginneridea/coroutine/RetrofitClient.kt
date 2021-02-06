@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitClient {
     companion object {
-        val retrofit = Retrofit.Builder()
+        val retrofit: Webservice = Retrofit.Builder()
             .baseUrl("https://api.github.com")
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .build().create(Webservice::class.java)
