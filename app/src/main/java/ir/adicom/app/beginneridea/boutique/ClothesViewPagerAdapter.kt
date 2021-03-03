@@ -14,10 +14,10 @@ class ClothesViewPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm, BE
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-        return when(position) {
-            0 -> "A"
-            1 -> "B"
-            else -> "C"
+        return when (position) {
+            0 -> "Zero"
+            1 -> "One"
+            else -> "Other"
         }
     }
 }
