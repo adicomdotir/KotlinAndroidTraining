@@ -8,6 +8,8 @@ import androidx.room.RoomDatabase
 @Database(entities = [ProjectModel::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
 
+    abstract fun projectDao(): ProjectDao
+
     companion object {
         private var INSTANCE: AppDatabase? = null
 
