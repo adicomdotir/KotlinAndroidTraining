@@ -9,6 +9,7 @@ import ir.adicom.app.beginneridea.boutique.BoutiqueActivity
 import ir.adicom.app.beginneridea.coroutine.CoroutineSampleActivity
 import ir.adicom.app.beginneridea.dagger.DaggerActivity
 import ir.adicom.app.beginneridea.databinding.ActivityMainBinding
+import ir.adicom.app.beginneridea.mvvm_training.MainTrainingActivity
 import ir.adicom.app.beginneridea.news.NewsActivity
 import ir.adicom.app.beginneridea.quiz.SimpleQuizActivity
 import ir.adicom.app.beginneridea.rgb2hex.ColorToHexActivity
@@ -74,6 +75,12 @@ class MainActivity : AppCompatActivity() {
         // Using view binding for binding
         activityMainBinding.btnShoppingList.setOnClickListener {
             val intent = Intent(this, ShoppingActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Using view binding for binding
+        activityMainBinding.btnTraining.setOnClickListener {
+            val intent = Intent(this, MainTrainingActivity::class.java)
             startActivity(intent)
         }
     }

@@ -20,4 +20,5 @@
     <string name="boutique">Boutique</string>
     <string name="mvvm">MVVM</string>
     <string name="stringlong">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</string>
+    <string name="training">Training</string>
 </resources>

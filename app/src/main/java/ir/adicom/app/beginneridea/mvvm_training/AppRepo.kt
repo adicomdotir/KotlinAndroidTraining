@@ -1,6 +1,7 @@
 package ir.adicom.app.beginneridea.mvvm_training
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 
 class AppRepo(context: Context) {
     val appDatabase: AppDatabase = AppDatabase.getDatabase(context)!!
@@ -17,7 +18,7 @@ class AppRepo(context: Context) {
         appDatabase.projectDao().deleteProject(projectModel)
     }
 
-    fun getAllProject(): List<ProjectModel> {
+    fun getAllProject(): LiveData<List<ProjectModel>> {
         return appDatabase.projectDao().getAllProject()
     }
 }

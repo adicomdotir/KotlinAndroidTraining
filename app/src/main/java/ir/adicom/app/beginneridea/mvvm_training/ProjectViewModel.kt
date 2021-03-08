@@ -2,6 +2,7 @@ package ir.adicom.app.beginneridea.mvvm_training
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 
 class ProjectViewModel(application: Application) : AndroidViewModel(application) {
     val appRepo: AppRepo = AppRepo(application)
@@ -18,7 +19,7 @@ class ProjectViewModel(application: Application) : AndroidViewModel(application)
         appRepo.deleteProject(projectModel)
     }
 
-    fun getAllProject(): List<ProjectModel> {
+    fun getAllProject(): LiveData<List<ProjectModel>> {
         return appRepo.getAllProject()
     }
 }
