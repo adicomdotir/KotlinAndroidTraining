@@ -1,6 +1,7 @@
 package ir.adicom.app.beginneridea.mvvm_training
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
@@ -12,26 +13,35 @@ import kotlinx.android.synthetic.main.activity_add_project.*
 
 
 class AddProjectActivity : AppCompatActivity() {
-    private val title: String? = null
     private var lang: String = ""
-    private val watcher = 0
-    private var issues: Int = 0
+    private var isEdit = false
+    private var id = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_project)
         initDropDown()
 
+
+        if (intent.hasExtra("model")) {
+            val modelProject: ProjectModel = intent.getSerializableExtra("model") as ProjectModel
+            edtTitle.setText(modelProject.title)
+            edtWatcher.setText(modelProject.watcher.toString())
+            edtIssue.setText(modelProject.issues.toString())
+            id = modelProject.pId
+        }
+
         val appRepo = AppRepo(this)
         btnAddProject.setOnClickListener {
             val projectModel = ProjectModel(
-                0,
+                id,
                 edtTitle.text.toString(),
                 lang,
                 edtWatcher.text.toString().toInt(),
                 edtIssue.text.toString().toInt()
             )
             appRepo.insertProject(projectModel)
+            finish()
         }
     }
 

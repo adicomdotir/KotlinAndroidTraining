@@ -2,20 +2,28 @@ package ir.adicom.app.beginneridea.mvvm_training
 
 import android.content.Context
 import androidx.lifecycle.LiveData
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class AppRepo(context: Context) {
     val appDatabase: AppDatabase = AppDatabase.getDatabase(context)!!
 
     fun insertProject(projectModel: ProjectModel) {
-        appDatabase.projectDao().insertProject(projectModel)
+        Thread {
+            appDatabase.projectDao().insertProject(projectModel)
+        }.start()
     }
 
     fun updateProject(projectModel: ProjectModel) {
-        appDatabase.projectDao().updateProject(projectModel)
+        GlobalScope.launch {
+            appDatabase.projectDao().updateProject(projectModel)
+        }
     }
 
     fun deleteProject(projectModel: ProjectModel) {
-        appDatabase.projectDao().deleteProject(projectModel)
+        GlobalScope.launch {
+            appDatabase.projectDao().deleteProject(projectModel)
+        }
     }
 
     fun getAllProject(): LiveData<List<ProjectModel>> {

@@ -7,8 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import ir.adicom.app.beginneridea.R
 import kotlinx.android.synthetic.main.project_item_layout.view.*
 
-class ProjectAdapter : RecyclerView.Adapter<ProjectAdapter.ViewHolder>() {
+class ProjectAdapter(val onClick: OnClickItemListenerInterface) : RecyclerView.Adapter<ProjectAdapter.ViewHolder>() {
     var projectModelList: List<ProjectModel> = mutableListOf()
+
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {}
 
@@ -26,6 +27,12 @@ class ProjectAdapter : RecyclerView.Adapter<ProjectAdapter.ViewHolder>() {
         val projectModel = projectModelList[position]
         holder.itemView.txtPName.text = projectModel.title
         holder.itemView.txt_watcher.text = projectModel.watcher.toString()
+        holder.itemView.imgDelete.setOnClickListener {
+            onClick.onClickItem(projectModel, false)
+        }
+        holder.itemView.imgEdit.setOnClickListener {
+            onClick.onClickItem(projectModel, true)
+        }
     }
 
     fun setProjects(projects: List<ProjectModel>) {
