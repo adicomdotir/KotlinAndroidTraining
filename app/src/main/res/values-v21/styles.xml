@@ -5,4 +5,13 @@
         <item name="android:textColor">@color/colorA</item>
         <item name="android:background">@drawable/btn_custom</item>
     </style>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="android:statusBarColor">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
 </resources>

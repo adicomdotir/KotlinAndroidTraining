@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#803c94</color>
+    <color name="colorPrimaryDark">#803c94</color>
+    <color name="colorAccent">#936b9f</color>
     <color name="colorA">#008577</color>
     <color name="correctAnswer">#8cc63e</color>
     <color name="wrongAnswer">#ed1b24</color>
@@ -10,4 +10,6 @@
     <color name="red">#F44336</color>
     <color name="white">#FFFFFF</color>
     <color name="colorPurple">#4a148c</color>
+    <color name="backgroundWhite">#EDE9E9</color>
+    <color name="hintColor">#928E8E</color>
 </resources>
