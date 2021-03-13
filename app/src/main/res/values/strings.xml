@@ -21,4 +21,5 @@
     <string name="mvvm">MVVM</string>
     <string name="stringlong">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</string>
     <string name="training">Training</string>
+    <string name="note_app">Note App</string>
 </resources>
