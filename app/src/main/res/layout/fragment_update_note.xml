@@ -65,6 +65,7 @@
         android:id="@+id/fabUpdate"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/colorPrimary"
         android:clickable="true"
         app:borderWidth="0dp"
         android:tintMode="@color/white"
