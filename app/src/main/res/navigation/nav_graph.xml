@@ -49,5 +49,10 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/homeFragment" />
+        <argument
+            android:name="note"
+            app:argType="ir.adicom.app.beginneridea.noteapp.model.Note"
+            app:nullable="true"
+            />
     </fragment>
 </navigation>

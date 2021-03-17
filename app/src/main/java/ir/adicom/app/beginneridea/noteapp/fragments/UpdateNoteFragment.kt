@@ -1,60 +1,104 @@
 package ir.adicom.app.beginneridea.noteapp.fragments
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import ir.adicom.app.beginneridea.R
+import ir.adicom.app.beginneridea.databinding.FragmentUpdateNoteBinding
+import ir.adicom.app.beginneridea.noteapp.NoteAppMainActivity
+import ir.adicom.app.beginneridea.noteapp.model.Note
+import ir.adicom.app.beginneridea.noteapp.toast
+import ir.adicom.app.beginneridea.noteapp.viewmodel.NoteViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [UpdateNoteFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class UpdateNoteFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentUpdateNoteBinding? = null
+    private val binding get() = _binding!!
+
+    private val args: UpdateNoteFragmentArgs by navArgs()
+    private lateinit var currentNote: Note
+
+    private lateinit var noteViewModel: NoteViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_update_note, container, false)
+    ): View {
+        _binding = FragmentUpdateNoteBinding.inflate(
+            inflater,
+            container,
+            false
+        )
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment UpdateNoteFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            UpdateNoteFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        noteViewModel = (activity as NoteAppMainActivity).noteViewModel
+
+        currentNote = args.note!!
+        binding.etNoteTitleUpdate.setText(currentNote.noteTitle)
+        binding.etNoteBodyUpdate.setText(currentNote.noteBody)
+
+        binding.fabUpdate.setOnClickListener {
+            val title = binding.etNoteTitleUpdate.text.toString().trim()
+            val body = binding.etNoteBodyUpdate.text.toString().trim()
+
+            if (title.isNotEmpty()) {
+                val note = Note(currentNote.id, title, body)
+                noteViewModel.updateNote(note)
+
+                it.findNavController().navigate(R.id.action_updateNoteFragment_to_homeFragment)
+            } else {
+                activity?.toast("Please enter title name!")
             }
+
+        }
+    }
+
+    fun deleteNote() {
+        AlertDialog.Builder(activity).apply {
+            setTitle("Delete Note")
+            setMessage("Are you sure want to delete this note?")
+            setPositiveButton("Delete") { dialogInterface, i ->
+                noteViewModel.deleteNote(currentNote)
+                view?.findNavController()?.navigate(
+                    R.id.action_updateNoteFragment_to_homeFragment
+                )
+            }
+            setNegativeButton("Cancel", null)
+        }.create().show()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.delete_menu -> {
+                deleteNote()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.clear()
+        inflater.inflate(R.menu.update_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
