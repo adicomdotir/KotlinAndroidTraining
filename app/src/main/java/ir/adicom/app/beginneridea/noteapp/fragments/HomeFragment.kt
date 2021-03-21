@@ -3,6 +3,7 @@ package ir.adicom.app.beginneridea.noteapp.fragments
 import android.opengl.Visibility
 import android.os.Bundle
 import android.view.*
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.lifecycle.Observer
@@ -15,7 +16,7 @@ import ir.adicom.app.beginneridea.noteapp.adapter.NoteAdapter
 import ir.adicom.app.beginneridea.noteapp.model.Note
 import ir.adicom.app.beginneridea.noteapp.viewmodel.NoteViewModel
 
-class HomeFragment : Fragment(R.layout.fragment_home) {
+class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextListener {
 
     private var _binding: FragmentHomeBinding? = null
     val binding get() = _binding!!
@@ -84,11 +85,37 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
+        menu.clear()
         inflater.inflate(R.menu.home_menu, menu)
+
+        val mMenuSearch = menu.findItem(R.id.app_bar_search).actionView as SearchView
+        mMenuSearch.isSubmitButtonEnabled = true
+        mMenuSearch.setOnQueryTextListener(this)
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        if (query != null) {
+            searchNotes(query)
+        }
+        return true
+    }
+
+    override fun onQueryTextChange(query: String?): Boolean {
+        if (query != null) {
+            searchNotes(query)
+        }
+        return true
+    }
+
+    private fun searchNotes(query: String?) {
+        val searchQuery = "%$query%"
+        noteViewModel.searchNote(searchQuery).observe(this, Observer {
+            noteAdapter.differ.submitList(it)
+        })
     }
 }
