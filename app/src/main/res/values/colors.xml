@@ -12,4 +12,13 @@
     <color name="colorPurple">#4a148c</color>
     <color name="backgroundWhite">#EDE9E9</color>
     <color name="hintColor">#928E8E</color>
+
+
+    <color name="colorPrimaryNew">#131EEA</color>
+    <color name="colorPrimaryDarkNew">#131EEA</color>
+    <color name="colorAccentNew">#F13413</color>
+	<color name="colorLayerDark">#D6000000</color>
+    <color name="colorLayerSemiDark">#60000000</color>
+    <color name="colorTextPrimary">#212121</color>
+    <color name="colorTextHint">#808080</color>
 </resources>

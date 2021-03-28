@@ -12,7 +12,7 @@ ext.versionMinor = 1
 ext.versionPatch = 0
 ext.versionClassifier = null
 ext.isSnapshot = true
-ext.minimumSdkVersion = 18
+ext.minimumSdkVersion = 19
 
 android {
     compileSdkVersion 28
