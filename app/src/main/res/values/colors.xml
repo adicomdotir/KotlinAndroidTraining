@@ -21,4 +21,6 @@
     <color name="colorLayerSemiDark">#60000000</color>
     <color name="colorTextPrimary">#212121</color>
     <color name="colorTextHint">#808080</color>
+    <color name="colorSignInBack">#333333</color>
+    <color name="colorButton">#ffcc33</color>
 </resources>
