@@ -20,6 +20,7 @@
     <string name="boutique">Boutique</string>
     <string name="mvvm">MVVM</string>
     <string name="stringlong">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</string>
+    <string name="very_long">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquid at distinctio dolor hic ipsa, nihil praesentium quod. Ad amet at atque blanditiis culpa, eligendi enim fugiat impedit iusto ratione.</string>
     <string name="training">Training</string>
     <string name="note_app">Note App</string>
     <string name="or_sign_in_with">Or sign in with</string>

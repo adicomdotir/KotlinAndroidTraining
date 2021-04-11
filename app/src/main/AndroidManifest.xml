@@ -11,7 +11,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".login.OtherLoginActivity"></activity>
+        <activity android:name=".login.CollapsingToolbarActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".login.OtherLoginActivity" />
         <activity android:name=".login.IntroActivity" />
         <activity android:name=".login.ModernLoginActivity" />
         <activity
