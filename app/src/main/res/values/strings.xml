@@ -25,4 +25,14 @@
     <string name="note_app">Note App</string>
     <string name="or_sign_in_with">Or sign in with</string>
     <string name="forget_your_password">Forget your password?</string>
+    <string name="text_directors">director</string>
+    <string name="text_movie_title">text movie title</string>
+    <string name="text_list_movie_directors">text_list_movie_directors</string>
+    <string name="text_list_movie_star_actors">text_list_movie_star_actors</string>
+    <string name="test_movie_description">test_movie_description</string>
+    <string name="text_star_actors">text_star_actors</string>
+    <string name="hello_world">HelloWorld</string>
+    <string name="type_something">Type Something</string>
+    <string name="change_text">Change Text</string>
+    <string name="open_activity_and_change_text">Open Activity</string>
 </resources>

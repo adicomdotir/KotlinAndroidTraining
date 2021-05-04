@@ -23,4 +23,5 @@
     <color name="colorTextHint">#808080</color>
     <color name="colorSignInBack">#333333</color>
     <color name="colorButton">#ffcc33</color>
+    <color name="grey5">#635A59</color>
 </resources>
