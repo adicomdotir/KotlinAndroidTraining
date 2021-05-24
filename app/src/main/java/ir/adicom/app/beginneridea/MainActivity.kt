@@ -16,6 +16,7 @@ import ir.adicom.app.beginneridea.quiz.SimpleQuizActivity
 import ir.adicom.app.beginneridea.rgb2hex.ColorToHexActivity
 import ir.adicom.app.beginneridea.shopping_list.ShoppingActivity
 import ir.adicom.app.beginneridea.taskappmvvm.ui.tasks.TasksActivity
+import ir.adicom.app.beginneridea.training.TrainingActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -87,6 +88,11 @@ class MainActivity : AppCompatActivity() {
 
         activityMainBinding.btnNoteApp.setOnClickListener {
             val intent = Intent(this, NoteAppMainActivity::class.java)
+            startActivity(intent)
+        }
+
+        activityMainBinding.btnCustomTraining.setOnClickListener {
+            val intent = Intent(this, TrainingActivity::class.java)
             startActivity(intent)
         }
     }

@@ -49,6 +49,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    dynamicFeatures = []
 }
 
 private Integer generateVersionCode() {

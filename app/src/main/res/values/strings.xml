@@ -35,4 +35,7 @@
     <string name="type_something">Type Something</string>
     <string name="change_text">Change Text</string>
     <string name="open_activity_and_change_text">Open Activity</string>
+    <string name="title_dynamicfeature">Module Title</string>
+    <string name="custom_training">Custom Training</string>
+    <string name="go_to_next">Go to next</string>
 </resources>

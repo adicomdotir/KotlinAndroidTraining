@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/custom_training"
+    app:startDestination="@id/test1Fragment">
+
+    <fragment
+        android:id="@+id/test1Fragment"
+        android:name="ir.adicom.app.beginneridea.training.Test1Fragment"
+        android:label="fragment_test1"
+        tools:layout="@layout/fragment_test1" >
+        <action
+            android:id="@+id/action_test1Fragment_to_test2Fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:destination="@id/test2Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/test2Fragment"
+        android:name="ir.adicom.app.beginneridea.training.Test2Fragment"
+        android:label="fragment_test2"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right"
+        tools:layout="@layout/fragment_test2" />
+</navigation>
