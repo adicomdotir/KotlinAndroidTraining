@@ -1,4 +1,5 @@
-package ir.adicom.app.beginneridea.training
+package ir.adicom.app
+.beginneridea.training
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
