@@ -3,17 +3,23 @@ package ir.adicom.app.beginneridea.dagger
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import ir.adicom.app.beginneridea.R
-import kotlinx.android.synthetic.main.activity_dagger.*
+import javax.inject.Inject
 
 class DaggerActivity : AppCompatActivity() {
+
+    @Inject
+    lateinit var otherCar: Car
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dagger)
 
-        val connector: Connector = DaggerConnector.create()
-        val hero: Hero = connector.injectPower()
+        val carComponent = DaggerCarComponent.builder()
+            .horsePower(120)
+            .engineCapacity(1000)
+            .build()
 
-        tv_dagger_message.text = hero.toString()
-
+        carComponent.inject(this)
+        otherCar.drive()
     }
 }
