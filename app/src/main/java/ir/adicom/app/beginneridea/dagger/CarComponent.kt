@@ -4,7 +4,7 @@ import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Named
 
-@Component
+@Component (modules = [WheelsModule::class])
 interface CarComponent {
     fun getCar(): Car
 
