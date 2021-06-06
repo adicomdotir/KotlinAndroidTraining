@@ -2,9 +2,8 @@ package ir.adicom.app.beginneridea.dagger
 
 import android.util.Log
 
-class PetrolEngine(private var powerHorse: Int, private var engineCapacity: Int): Engine {
-
+class PetrolEngine(private val horsePower: Int, private val engineCapacity: Int) : Engine {
     override fun start() {
-        Log.e("TAG", "start petrol engine, Power Horse = $powerHorse, Engine Capacity = $engineCapacity")
+        Log.e("TAG", "petrol engine started, Horse Power = $horsePower, Engine Capacity = $engineCapacity")
     }
 }

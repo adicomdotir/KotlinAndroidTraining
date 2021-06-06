@@ -12,7 +12,9 @@ class WheelsModule {
 
     @Provides
     fun getTires(): Tires {
-        return Tires()
+        val tires = Tires()
+        tires.inflate()
+        return tires
     }
 
     @Provides

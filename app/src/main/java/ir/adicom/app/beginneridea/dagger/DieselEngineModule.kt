@@ -7,5 +7,5 @@ import dagger.Provides
 @Module
 abstract class DieselEngineModule {
     @Binds
-    abstract fun getEngine(dieselEngine: DieselEngine): Engine
+    abstract fun getDieselEngine(dieselEngine: DieselEngine): Engine
 }
