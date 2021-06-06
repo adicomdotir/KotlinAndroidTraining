@@ -3,6 +3,8 @@ package ir.adicom.app.beginneridea.dagger
 import android.util.Log
 import javax.inject.Inject
 
-interface Engine {
-    fun start()
+class Engine @Inject constructor() {
+    init {
+        Log.e("TAG", "Engine created")
+    }
 }
