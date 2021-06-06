@@ -3,8 +3,7 @@ package ir.adicom.app.beginneridea.dagger
 import android.util.Log
 import javax.inject.Inject
 
-class Car @Inject constructor(wheels: Wheels) {
-    @Inject lateinit var engine: Engine
+class Car @Inject constructor(val engine: Engine, val wheels: Wheels) {
     @Inject lateinit var remote: Remote
 
     init {
@@ -17,6 +16,7 @@ class Car @Inject constructor(wheels: Wheels) {
     }
 
     fun drive() {
+        engine.start()
         Log.e("TAG", "driving ...")
     }
 }
