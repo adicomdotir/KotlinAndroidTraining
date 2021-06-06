@@ -4,9 +4,9 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class PetrolEngineModule(private val horsePower: Int)  {
+class PetrolEngineModule(private val horsePower: Int, private val engineCapacity: Int)  {
     @Provides
     fun getPetrolEngine(): Engine {
-        return PetrolEngine(horsePower)
+        return PetrolEngine(horsePower, engineCapacity)
     }
 }
