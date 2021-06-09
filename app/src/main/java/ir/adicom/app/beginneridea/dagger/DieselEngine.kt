@@ -4,8 +4,8 @@ import android.util.Log
 import javax.inject.Inject
 import javax.inject.Named
 
-class DieselEngine @Inject constructor(@Named("horsePower") private val horsePower: Int, @Named("engineCapacity") private val engineCapacity: Int) : Engine {
+class DieselEngine @Inject constructor() : Engine {
     override fun start() {
-        Log.e("TAG", "diesel engine started, Horse Power = $horsePower, Engine Capacity = $engineCapacity")
+        Log.e("TAG", "diesel engine started, Horse Power = 0 Engine Capacity = 0")
     }
 }

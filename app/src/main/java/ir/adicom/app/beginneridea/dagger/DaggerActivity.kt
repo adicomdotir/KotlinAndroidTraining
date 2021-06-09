@@ -13,11 +13,20 @@ class DaggerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dagger)
 
+//        val carComponent = DaggerCarComponent.builder()
+//            .driverComponent((application as MyApplication).getDriverComponent())
+//            .build()
+
         val carComponent = DaggerCarComponent.builder()
-            .horsePower(120)
+            .driverComponent((application as MyApplication).getDriverComponent())
             .engineCapacity(2000)
+            .horsePower(120)
             .build()
+
         carComponent.inject(this)
         car.drive()
+
+        val car2 = carComponent.getCar()
+        car2.drive()
     }
 }
