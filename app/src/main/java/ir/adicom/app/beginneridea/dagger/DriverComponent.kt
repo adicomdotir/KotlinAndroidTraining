@@ -7,4 +7,6 @@ import dagger.Component
 interface DriverComponent {
 
     fun getDriver(): Driver
+
+    fun getCarComponentBuilder(): CarComponent.Builder
 }
