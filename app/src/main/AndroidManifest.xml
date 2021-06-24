@@ -12,31 +12,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".dagger_training.DaggerTrainingActivity">
-
+        <activity android:name=".other_recyclerview_sample.RecyclerViewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".dagger_training.DaggerTrainingActivity">
+        </activity>
         <activity android:name=".training.TrainingActivity" />
-        <activity android:name=".dashboaduidesign.DashboardUiDesignActivity"></activity>
+        <activity android:name=".dashboaduidesign.DashboardUiDesignActivity" />
         <activity android:name=".espresso.SomeTextActivity" />
-        <activity android:name=".espresso.EspressoActivity"></activity>
-        <activity android:name=".mvvmpractice.MvvmPracticeActivity"></activity>
-        <activity android:name=".login.CollapsingToolbarActivity"></activity>
+        <activity android:name=".espresso.EspressoActivity" />
+        <activity android:name=".mvvmpractice.MvvmPracticeActivity" />
+        <activity android:name=".login.CollapsingToolbarActivity" />
         <activity android:name=".login.OtherLoginActivity" />
         <activity android:name=".login.IntroActivity" />
         <activity android:name=".login.ModernLoginActivity" />
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity android:name=".noteapp.NoteAppMainActivity" />
         <activity android:name=".mvvm_training.AddProjectActivity" />
         <activity android:name=".mvvm_training.MainTrainingActivity" />
-        <activity android:name=".ModernActivity"></activity>
-        <activity android:name=".CardViewActivity"></activity>
+        <activity android:name=".ModernActivity" />
+        <activity android:name=".CardViewActivity" />
         <activity android:name=".shopping_list.ShoppingActivity" />
         <activity android:name=".boutique.BoutiqueActivity" />
         <activity android:name=".news.NewsActivity" />
@@ -48,8 +49,7 @@
         <activity android:name=".quiz.SimpleQuizActivity" />
         <activity android:name=".rgb2hex.ColorToHexActivity" />
         <activity android:name=".bin2dec.Bin2DecActivity" />
-        <activity android:name=".MainActivity">
-        </activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>
