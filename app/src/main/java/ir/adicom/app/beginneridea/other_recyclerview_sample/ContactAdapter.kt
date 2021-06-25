@@ -4,11 +4,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import ir.adicom.app.beginneridea.R
 
-class ContactAdapter: RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
+class ContactAdapter(val onItemClickListener: OnItemClickListener): RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
 
     val mutableList: MutableList<String> = mutableListOf()
 
@@ -35,17 +34,28 @@ class ContactAdapter: RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
         mutableList.add("Karol Syer")
     }
 
-    class ContactViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ContactViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private var tvFirstChar: TextView = itemView.findViewById(R.id.tv_first_character)
         private var tvFullName: TextView = itemView.findViewById(R.id.tv_fullname)
 
         fun bindContact(fullName: String) {
             tvFullName.text = fullName
             tvFirstChar.text = fullName.substring(0, 1)
+
             itemView.setOnClickListener {
-                Toast.makeText(itemView.context, fullName, Toast.LENGTH_SHORT).show()
+                onItemClickListener.onItemClick(fullName, adapterPosition)
             }
         }
+    }
+
+    fun addNewContact(fullName: String) {
+        mutableList.add(0, fullName)
+        notifyItemInserted(0)
+    }
+
+    fun updateNewContact(fullName: String, position: Int) {
+        mutableList.add(position, fullName)
+        notifyItemChanged(position)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
@@ -59,5 +69,9 @@ class ContactAdapter: RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
 
     override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
         holder.bindContact(mutableList[position])
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(fullName: String, adapterPosition: Int)
     }
 }

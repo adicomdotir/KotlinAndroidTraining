@@ -19,6 +19,7 @@ android {
     defaultConfig {
         applicationId "ir.adicom.app.beginneridea"
         minSdkVersion project.ext.minimumSdkVersion
+        vectorDrawables.useSupportLibrary = true
         targetSdkVersion 28
         versionCode generateVersionCode()
         versionName generateVersionName()
