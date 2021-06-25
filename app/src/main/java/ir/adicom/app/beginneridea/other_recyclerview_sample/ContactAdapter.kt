@@ -4,34 +4,36 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import ir.adicom.app.beginneridea.R
+import java.util.ArrayList
 
 class ContactAdapter(val onItemClickListener: OnItemClickListener): RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
 
-    val mutableList: MutableList<String> = mutableListOf()
+    val arrayList: ArrayList<String> = arrayListOf()
 
     init {
-        mutableList.add("Ruthann Trustrie")
-        mutableList.add("Peadar Dawtrey")
-        mutableList.add("Felipe Bradtke")
-        mutableList.add("Claude Crissil")
-        mutableList.add("Jacky Girardeau")
-        mutableList.add("Rubia Dominguez")
-        mutableList.add("Michaela Churchley")
-        mutableList.add("Harvey Pentelow")
-        mutableList.add("Neilla Langton")
-        mutableList.add("Marco Greaves")
-        mutableList.add("Liz Batchley")
-        mutableList.add("Lamond Littlepage")
-        mutableList.add("Malina Weir")
-        mutableList.add("Tomlin Lenchenko")
-        mutableList.add("Hy Pavelin")
-        mutableList.add("Jenelle Palin")
-        mutableList.add("Damon Knewstubb")
-        mutableList.add("Alex Ivanusyev")
-        mutableList.add("Hamil Callery")
-        mutableList.add("Karol Syer")
+        arrayList.add("Ruthann Trustrie")
+        arrayList.add("Peadar Dawtrey")
+        arrayList.add("Felipe Bradtke")
+        arrayList.add("Claude Crissil")
+        arrayList.add("Jacky Girardeau")
+        arrayList.add("Rubia Dominguez")
+        arrayList.add("Michaela Churchley")
+        arrayList.add("Harvey Pentelow")
+        arrayList.add("Neilla Langton")
+        arrayList.add("Marco Greaves")
+        arrayList.add("Liz Batchley")
+        arrayList.add("Lamond Littlepage")
+        arrayList.add("Malina Weir")
+        arrayList.add("Tomlin Lenchenko")
+        arrayList.add("Hy Pavelin")
+        arrayList.add("Jenelle Palin")
+        arrayList.add("Damon Knewstubb")
+        arrayList.add("Alex Ivanusyev")
+        arrayList.add("Hamil Callery")
+        arrayList.add("Karol Syer")
     }
 
     inner class ContactViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -45,16 +47,22 @@ class ContactAdapter(val onItemClickListener: OnItemClickListener): RecyclerView
             itemView.setOnClickListener {
                 onItemClickListener.onItemClick(fullName, adapterPosition)
             }
+
+            itemView.setOnLongClickListener {
+                arrayList.removeAt(adapterPosition)
+                notifyItemRemoved(adapterPosition)
+                false
+            }
         }
     }
 
     fun addNewContact(fullName: String) {
-        mutableList.add(0, fullName)
+        arrayList.add(0, fullName)
         notifyItemInserted(0)
     }
 
     fun updateNewContact(fullName: String, position: Int) {
-        mutableList.add(position, fullName)
+        arrayList.add(position, fullName)
         notifyItemChanged(position)
     }
 
@@ -64,11 +72,11 @@ class ContactAdapter(val onItemClickListener: OnItemClickListener): RecyclerView
     }
 
     override fun getItemCount(): Int {
-        return mutableList.size
+        return arrayList.size
     }
 
     override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
-        holder.bindContact(mutableList[position])
+        holder.bindContact(arrayList[position])
     }
 
     interface OnItemClickListener {
