@@ -12,15 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".other_recyclerview_sample.RecyclerViewActivity">
+        <activity android:name=".rxjava.RxJavaActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter></activity>
+        <activity android:name=".other_recyclerview_sample.RecyclerViewActivity">
         </activity>
-        <activity android:name=".dagger_training.DaggerTrainingActivity">
-        </activity>
+        <activity android:name=".dagger_training.DaggerTrainingActivity"></activity>
         <activity android:name=".training.TrainingActivity" />
         <activity android:name=".dashboaduidesign.DashboardUiDesignActivity" />
         <activity android:name=".espresso.SomeTextActivity" />
@@ -49,7 +49,7 @@
         <activity android:name=".quiz.SimpleQuizActivity" />
         <activity android:name=".rgb2hex.ColorToHexActivity" />
         <activity android:name=".bin2dec.Bin2DecActivity" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
