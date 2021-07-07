@@ -1,10 +1,11 @@
 package ir.adicom.app.beginneridea.dagger
 
 import android.app.Application
+import android.util.Log
 import ir.adicom.app.beginneridea.dagger_training.AppComponent
-import ir.adicom.app.beginneridea.dagger_training.AppModule
 import ir.adicom.app.beginneridea.dagger_training.DaggerAppComponent
-import ir.adicom.app.beginneridea.dagger_training.NetModule
+import ir.adicom.app.beginneridea.eventbus.EventMessage
+import org.greenrobot.eventbus.EventBus
 
 class MyApplication : Application() {
     private lateinit var driverComponent: DriverComponent
@@ -12,6 +13,8 @@ class MyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        Log.e("TAG", "onCreate: ")
+        EventBus.getDefault().post(EventMessage("I'm event bus library!"))
         driverComponent = DaggerDriverComponent.create()
         appComponent = DaggerAppComponent.builder()
             .build()

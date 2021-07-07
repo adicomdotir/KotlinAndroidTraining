@@ -21,6 +21,7 @@ android {
         minSdkVersion project.ext.minimumSdkVersion
         vectorDrawables.useSupportLibrary = true
         targetSdkVersion 28
+        multiDexEnabled true
         versionCode generateVersionCode()
         versionName generateVersionName()
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
