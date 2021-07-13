@@ -12,15 +12,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".retrofitwithdagger.RetrofitWithDaggerActivity">
+        <activity android:name=".currencyappwithjava.CurrencyMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter></activity>
-        <activity android:name=".eventbus.EventBusActivity">
+            </intent-filter>
         </activity>
-        <activity android:name=".rxjava.RxJavaActivity"></activity>
+        <activity android:name=".currencyappwithjava.HomeActivity" />
+        <activity android:name=".retrofitwithdagger.RetrofitWithDaggerActivity">
+        </activity>
+        <activity android:name=".eventbus.EventBusActivity" />
+        <activity android:name=".rxjava.RxJavaActivity" />
         <activity android:name=".other_recyclerview_sample.RecyclerViewActivity" />
         <activity android:name=".dagger_training.DaggerTrainingActivity" />
         <activity android:name=".training.TrainingActivity" />

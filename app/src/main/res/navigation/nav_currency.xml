@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_currency"
+    app:startDestination="@id/homeCurrencyFragment">
+
+    <fragment
+        android:id="@+id/homeCurrencyFragment"
+        android:name="ir.adicom.app.beginneridea.currencyappwithjava.ui.fragments.HomeCurrencyFragment"
+        android:label="fragment_home_currency"
+        tools:layout="@layout/fragment_home_currency" >
+        <action
+            android:id="@+id/action_homeCurrencyFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="ir.adicom.app.beginneridea.currencyappwithjava.ui.fragments.AccountFragment"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account" >
+        <action
+            android:id="@+id/action_accountFragment_to_balanceFragment"
+            app:destination="@id/balanceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/balanceFragment"
+        android:name="ir.adicom.app.beginneridea.currencyappwithjava.ui.fragments.BalanceFragment"
+        android:label="fragment_balance"
+        tools:layout="@layout/fragment_balance" >
+        <action
+            android:id="@+id/action_balanceFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+        <action
+            android:id="@+id/action_balanceFragment_to_homeCurrencyFragment"
+            app:destination="@id/homeCurrencyFragment" />
+    </fragment>
+</navigation>
