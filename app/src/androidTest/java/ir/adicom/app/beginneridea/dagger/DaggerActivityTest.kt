@@ -6,7 +6,5 @@ import org.junit.Test
 class DaggerActivityTest {
     @Test
     fun daggerTest() {
-        val carComponent = DaggerCarComponent.create()
-        carComponent.getCar().drive()
     }
 }

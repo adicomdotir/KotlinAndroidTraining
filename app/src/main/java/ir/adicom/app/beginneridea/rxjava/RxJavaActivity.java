@@ -11,6 +11,8 @@ import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import ir.adicom.app.beginneridea.R;
+import ir.adicom.app.beginneridea.coroutine.Repo;
+import ir.adicom.app.beginneridea.github.GithubApiService;
 
 public class RxJavaActivity extends AppCompatActivity {
 
@@ -46,6 +48,5 @@ public class RxJavaActivity extends AppCompatActivity {
 
             }
         });
-
     }
 }
