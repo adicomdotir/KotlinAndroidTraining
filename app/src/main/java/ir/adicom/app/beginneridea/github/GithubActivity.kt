@@ -1,19 +1,25 @@
 package ir.adicom.app.beginneridea.github
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.observe
+import com.bumptech.glide.Glide
 import io.reactivex.Observable
 import io.reactivex.Observer
-import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import ir.adicom.app.beginneridea.R
 import ir.adicom.app.beginneridea.coroutine.Repo
+import kotlinx.android.synthetic.main.activity_github.*
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import java.lang.StringBuilder
+
 
 class GithubActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,43 +34,47 @@ class GithubActivity : AppCompatActivity() {
 
         val githubApiService = retrofit.create(GithubApiService::class.java)
         githubApiService.getUserInformation()
-            .observeOn(Schedulers.io())
+            .observeOn(Schedulers.computation())
             .subscribeOn(AndroidSchedulers.mainThread())
             .subscribe(object : Observer<GithubUser> {
                 override fun onComplete() {
                 }
 
                 override fun onSubscribe(d: Disposable) {
-                    println("Not yet implemented")
+                    println("Init")
+                    runOnUiThread {
+                        tv_info.text = resources.getText(R.string.loading)
+                    }
                 }
 
                 override fun onNext(t: GithubUser) {
                     println(t.toString())
+
+
+
+                    runOnUiThread {
+                        val sb = StringBuilder()
+                        sb.append("FullName = ${t.name}").append("\n")
+                            .append("Bio = ${t.bio}").append("\n")
+                            .append("Company = ${t.company}").append("\n")
+                            .append("Followers = ${t.followers}, Following = ${t.following}").append("\n")
+                            .append("Location = ${t.location}").append("\n")
+                            .append("Login = ${t.login}").append("\n")
+                        tv_name.text = sb.toString()
+                        Glide.with(applicationContext).load(t.avatar_url).into(iv_avatar)
+                        runOnUiThread {
+                            tv_info.text = resources.getText(R.string.status)
+                        }
+                    }
                 }
 
                 override fun onError(e: Throwable) {
                     println("OnError" + e.message)
+                    runOnUiThread {
+                        tv_info.text = resources.getText(R.string.error_message)
+                    }
                 }
 
-            })
-
-        githubApiService.getRepo()
-            .observeOn(Schedulers.io())
-            .subscribeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : Observer<List<Repo>> {
-                override fun onComplete() {
-                }
-
-                override fun onSubscribe(d: Disposable) {
-                }
-
-                override fun onNext(t: List<Repo>) {
-                    println(t.size)
-                }
-
-                override fun onError(e: Throwable) {
-                    println("OnError" + e.message)
-                }
             })
     }
 }

@@ -39,4 +39,7 @@
     <string name="custom_training"> تمرین شخصی</string>
     <string name="go_to_next">Go to next</string>
     <string name="recycler_view_sample">Recycler View Sample</string>
+    <string name="loading">" در حال دریافت اطلاعات"</string>
+     <string name="status">وضعیت عادی</string>
+    <string name="error_message">" خطا در دریافت اطلاعات"</string>
 </resources>
