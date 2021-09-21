@@ -10,21 +10,22 @@
         android:id="@+id/btn_one_to_two"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="To Two"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_counter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="1980"
-        android:textColor="@color/colorPrimary"
-        android:textSize="32sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_one_to_two"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_player"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_one_to_two" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
