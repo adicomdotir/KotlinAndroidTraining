@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.android.dagger.login
+package ir.adicom.app.beginneridea.dagger_codelab.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -25,10 +25,10 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Observer
-import com.example.android.dagger.MyApplication
-import com.example.android.dagger.R
-import com.example.android.dagger.registration.RegistrationActivity
+import ir.adicom.app.beginneridea.R
+import ir.adicom.app.beginneridea.dagger_codelab.MyApplication
 import ir.adicom.app.beginneridea.dagger_codelab.main.MainActivity
+import ir.adicom.app.beginneridea.dagger_codelab.registration.RegistrationActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -37,7 +37,7 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_login_dagger)
 
         // Creates ViewModel and listens for the loginState LiveData
         loginViewModel = LoginViewModel((application as MyApplication).userManager)

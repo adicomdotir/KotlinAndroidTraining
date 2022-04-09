@@ -21,11 +21,11 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.android.dagger.login.LoginActivity
-import com.example.android.dagger.registration.RegistrationActivity
-import com.example.android.dagger.settings.SettingsActivity
 import ir.adicom.app.beginneridea.R
 import ir.adicom.app.beginneridea.dagger_codelab.MyApplication
+import ir.adicom.app.beginneridea.dagger_codelab.login.LoginActivity
+import ir.adicom.app.beginneridea.dagger_codelab.registration.RegistrationActivity
+import ir.adicom.app.beginneridea.dagger_codelab.settings.SettingsActivity
 
 class MainActivity : AppCompatActivity() {
 

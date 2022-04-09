@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.android.dagger.storage
+package ir.adicom.app.beginneridea.dagger_codelab.storage
 
 interface Storage {
     fun setString(key: String, value: String)

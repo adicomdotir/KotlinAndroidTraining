@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.example.android.dagger.settings
+package ir.adicom.app.beginneridea.dagger_codelab.settings
 
-import com.example.android.dagger.user.UserDataRepository
-import com.example.android.dagger.user.UserManager
+import ir.adicom.app.beginneridea.dagger_codelab.user.UserDataRepository
+import ir.adicom.app.beginneridea.dagger_codelab.user.UserManager
 
 /**
  * SettingsViewModel is the ViewModel that [SettingsActivity] uses to handle complex logic.

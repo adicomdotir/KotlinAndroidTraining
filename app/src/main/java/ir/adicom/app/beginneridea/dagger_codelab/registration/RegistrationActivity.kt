@@ -14,26 +14,27 @@
  * limitations under the License.
  */
 
-package com.example.android.dagger.registration
+package ir.adicom.app.beginneridea.dagger_codelab.registration
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.android.dagger.MyApplication
-import com.example.android.dagger.R
-import com.example.android.dagger.main.MainActivity
+import ir.adicom.app.beginneridea.R
+import ir.adicom.app.beginneridea.dagger_codelab.main.MainActivity
 import ir.adicom.app.beginneridea.dagger_codelab.registration.enterdetails.EnterDetailsFragment
 import ir.adicom.app.beginneridea.dagger_codelab.registration.termsandconditions.TermsAndConditionsFragment
+import javax.inject.Inject
 
 class RegistrationActivity : AppCompatActivity() {
 
+    @Inject
     lateinit var registrationViewModel: RegistrationViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_registration)
+        setContentView(R.layout.activity_registration_dagger)
 
-        registrationViewModel = RegistrationViewModel((application as MyApplication).userManager)
+//        registrationViewModel = RegistrationViewModel((application as MyApplication).userManager)
         supportFragmentManager.beginTransaction()
             .add(R.id.fragment_holder, EnterDetailsFragment())
             .commit()

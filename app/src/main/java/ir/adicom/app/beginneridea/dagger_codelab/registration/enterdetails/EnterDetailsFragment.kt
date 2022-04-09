@@ -25,9 +25,9 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
-import com.example.android.dagger.registration.RegistrationActivity
-import com.example.android.dagger.registration.RegistrationViewModel
 import ir.adicom.app.beginneridea.R
+import ir.adicom.app.beginneridea.dagger_codelab.registration.RegistrationActivity
+import ir.adicom.app.beginneridea.dagger_codelab.registration.RegistrationViewModel
 
 class EnterDetailsFragment : Fragment() {
 

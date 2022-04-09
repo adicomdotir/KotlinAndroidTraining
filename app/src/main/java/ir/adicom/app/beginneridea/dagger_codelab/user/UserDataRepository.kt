@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.android.dagger.user
+package ir.adicom.app.beginneridea.dagger_codelab.user
 
 import kotlin.random.Random
 

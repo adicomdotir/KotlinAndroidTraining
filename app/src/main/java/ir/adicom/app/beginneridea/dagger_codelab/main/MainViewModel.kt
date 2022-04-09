@@ -1,6 +1,6 @@
 package ir.adicom.app.beginneridea.dagger_codelab.main
 
-import com.example.android.dagger.user.UserDataRepository
+import ir.adicom.app.beginneridea.dagger_codelab.user.UserDataRepository
 
 /**
  * MainViewModel is the ViewModel that [MainActivity] uses to

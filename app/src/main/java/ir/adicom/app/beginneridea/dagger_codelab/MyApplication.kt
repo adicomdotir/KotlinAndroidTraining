@@ -17,8 +17,8 @@
 package ir.adicom.app.beginneridea.dagger_codelab
 
 import android.app.Application
-import com.example.android.dagger.storage.SharedPreferencesStorage
-import com.example.android.dagger.user.UserManager
+import ir.adicom.app.beginneridea.dagger_codelab.storage.SharedPreferencesStorage
+import ir.adicom.app.beginneridea.dagger_codelab.user.UserManager
 
 open class MyApplication : Application() {
 

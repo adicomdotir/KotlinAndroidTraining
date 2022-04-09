@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package com.example.android.dagger.login
+package ir.adicom.app.beginneridea.dagger_codelab.login
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.android.dagger.user.UserManager
+import ir.adicom.app.beginneridea.dagger_codelab.user.UserManager
 
 /**
  * LoginViewModel is the ViewModel that [LoginActivity] uses to

@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package com.example.android.dagger.settings
+package ir.adicom.app.beginneridea.dagger_codelab.settings
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import com.example.android.dagger.MyApplication
-import com.example.android.dagger.R
-import com.example.android.dagger.login.LoginActivity
+import ir.adicom.app.beginneridea.R
+import ir.adicom.app.beginneridea.dagger_codelab.MyApplication
+import ir.adicom.app.beginneridea.dagger_codelab.login.LoginActivity
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -30,7 +30,7 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_settings)
+        setContentView(R.layout.activity_settings_dagger)
 
         val userManager = (application as MyApplication).userManager
 
